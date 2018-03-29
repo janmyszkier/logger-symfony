@@ -17,6 +17,7 @@ class LogFixtures extends Fixture
         $log->setIpAddress('127.0.0.1');
         $log->setHttpReferer('index.html');
         $log->setSessionId(session_id());
+        $log->setCreatedAt(new \DateTime());
         $objectManager->persist($log);
 
         //log with POST
@@ -27,6 +28,7 @@ class LogFixtures extends Fixture
         $log->setIpAddress('0:0:0:0:0:ffff:7f00:1');
         $log->setHttpReferer('index.html');
         $log->setSessionId(session_id());
+        $log->setCreatedAt(new \DateTime());
         $objectManager->persist($log);
 
         //log with PUT
@@ -34,6 +36,7 @@ class LogFixtures extends Fixture
         $log->setRequestMethod('PUT');
         $log->setIpAddress('999.999.999.999');
         $log->setSessionId(session_id());
+        $log->setCreatedAt(new \DateTime());
         $objectManager->persist($log);
 
         //log with FILES (one of them)
@@ -52,6 +55,7 @@ class LogFixtures extends Fixture
             ]
         ]));
         $log->setIpAddress('0:0:0:0:0:ffff:7f00:1');
+        $log->setCreatedAt(new \DateTime());
         $objectManager->persist($log);
 
         $objectManager->flush();
