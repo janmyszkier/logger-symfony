@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/example-form", name="form")
+     */
+    public function formAction(Request $request)
+    {
+        return $this->render("@App/default/example-form.html.twig");
+    }
 }
