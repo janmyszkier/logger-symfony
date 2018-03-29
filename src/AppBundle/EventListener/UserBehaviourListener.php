@@ -4,7 +4,6 @@ namespace AppBundle\EventListener;
 
 use AppBundle\Entity\Log;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class UserBehaviourListener
@@ -17,8 +16,6 @@ class UserBehaviourListener
 
     public function onKernelRequest(GetResponseEvent $event)
     {
-        //die(__METHOD__);
-        // You get the exception object from the received event
         $request = $event->getRequest();
 
         /* @var \Symfony\Component\HttpFoundation\FileBag $fileBag */
@@ -42,7 +39,6 @@ class UserBehaviourListener
         }
 
         if(!empty($fileBag->keys())){
-            /* @TODO: this now only supports our known form, needs refactor to support all */
             $tmpFiles = [];
             foreach ($fileBag->keys() as $key){
                 $tmpFiles[$key] = (array)$fileBag->get($key);
@@ -57,7 +53,6 @@ class UserBehaviourListener
         $em->persist($log);
         $em->flush();
 
-        //$event->setResponse($event->getResponse());
     }
 
     public static function getSubscribedEvents()

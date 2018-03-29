@@ -26,7 +26,6 @@ class LastHourLogsCommand extends ContainerAwareCommand{
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-
         $hourAgo = strtotime('-1hour');
 
         /* @var LogBrowserService $logBrowser */
