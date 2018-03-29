@@ -42,8 +42,6 @@ class LogBrowserService {
             )
             ->getQuery();
 
-        var_dump($query->getSQL());
-
         return $query->getResult();
     }
 }
