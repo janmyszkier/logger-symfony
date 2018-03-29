@@ -52,6 +52,8 @@ class UserBehaviourListener
             }
         }
 
+        $log->setCreatedAt(new \DateTime());
+
         $em->persist($log);
         $em->flush();
 

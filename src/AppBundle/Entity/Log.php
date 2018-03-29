@@ -3,11 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index as Index;
 
 /**
  * Log
  *
- * @ORM\Table(name="log")
+ * @ORM\Table(name="log", indexes={@Index(name="created", columns={"created_at"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LogRepository")
  */
 class Log
@@ -77,6 +78,12 @@ class Log
      */
     private $httpReferer;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
 
     /**
      * Get id
@@ -278,6 +285,30 @@ class Log
     public function getHttpReferer()
     {
         return $this->httpReferer;
+    }
+
+    /**
+     * Set createdAt
+     * @ORM\PrePersist
+     * @param \DateTime $createdAt
+     *
+     * @return Animal
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }
 
